@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DCF17B98D73F223B7CA1644 /* libPods-Blinking_LED_detection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EDC71233FC3776D12B550F /* libPods-Blinking_LED_detection.a */; };
 		EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */; };
 		EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144121F00477E0044E38D /* AppDelegate.swift */; };
 		EA5144151F00477E0044E38D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144141F00477E0044E38D /* ViewController.swift */; };
 		EA5144181F00477E0044E38D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5144161F00477E0044E38D /* Main.storyboard */; };
 		EA51441A1F00477E0044E38D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5144191F00477E0044E38D /* Assets.xcassets */; };
 		EA51441D1F00477E0044E38D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA51441B1F00477E0044E38D /* LaunchScreen.storyboard */; };
-		EA545CD11F03AE0E00831063 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA545CD01F03AE0E00831063 /* Resnet50.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		70EDC71233FC3776D12B550F /* libPods-Blinking_LED_detection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blinking_LED_detection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8343B57B88AE687726AFDC8A /* Pods-Blinking_LED_detection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.release.xcconfig"; sourceTree = "<group>"; };
+		D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.debug.xcconfig"; sourceTree = "<group>"; };
+		EA1E38561F047981003E037A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameExtractor.swift; sourceTree = "<group>"; };
 		EA51440F1F00477E0044E38D /* Blinking_LED_detection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blinking_LED_detection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5144121F00477E0044E38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -25,7 +29,10 @@
 		EA5144191F00477E0044E38D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA51441C1F00477E0044E38D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA51441E1F00477E0044E38D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA545CD01F03AE0E00831063 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = Resnet50.mlmodel; path = ../../../../Downloads/Resnet50.mlmodel; sourceTree = "<group>"; };
+		EA6EE35E1F0479F700732508 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		EA6EE3601F047A1400732508 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EA6EE3621F047A1C00732508 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EA6EE3641F047A2300732508 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +40,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DCF17B98D73F223B7CA1644 /* libPods-Blinking_LED_detection.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B0A113DACBF631E5BACA0B9B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */,
+				8343B57B88AE687726AFDC8A /* Pods-Blinking_LED_detection.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		DA242EAE6156C53705F3AA43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA6EE3641F047A2300732508 /* QuartzCore.framework */,
+				EA6EE3621F047A1C00732508 /* OpenGLES.framework */,
+				EA6EE3601F047A1400732508 /* Foundation.framework */,
+				EA6EE35E1F0479F700732508 /* CoreMedia.framework */,
+				EA1E38561F047981003E037A /* AVFoundation.framework */,
+				70EDC71233FC3776D12B550F /* libPods-Blinking_LED_detection.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA5144061F00477E0044E38D = {
 			isa = PBXGroup;
 			children = (
 				EA5144111F00477E0044E38D /* Blinking_LED_detection */,
 				EA5144101F00477E0044E38D /* Products */,
+				B0A113DACBF631E5BACA0B9B /* Pods */,
+				DA242EAE6156C53705F3AA43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,7 +97,6 @@
 				EA5144191F00477E0044E38D /* Assets.xcassets */,
 				EA51441B1F00477E0044E38D /* LaunchScreen.storyboard */,
 				EA51441E1F00477E0044E38D /* Info.plist */,
-				EA545CD01F03AE0E00831063 /* Resnet50.mlmodel */,
 			);
 			path = Blinking_LED_detection;
 			sourceTree = "<group>";
@@ -77,9 +108,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EA5144211F00477E0044E38D /* Build configuration list for PBXNativeTarget "Blinking_LED_detection" */;
 			buildPhases = (
+				44EA5ECB2055ADF51CCD8864 /* [CP] Check Pods Manifest.lock */,
 				EA51440B1F00477E0044E38D /* Sources */,
 				EA51440C1F00477E0044E38D /* Frameworks */,
 				EA51440D1F00477E0044E38D /* Resources */,
+				6F92446E845C4B011520D305 /* [CP] Embed Pods Frameworks */,
+				E62E32509FF338CC37D7061E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,6 +170,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		44EA5ECB2055ADF51CCD8864 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6F92446E845C4B011520D305 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E62E32509FF338CC37D7061E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EA51440B1F00477E0044E38D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -143,7 +225,6 @@
 			files = (
 				EA5144151F00477E0044E38D /* ViewController.swift in Sources */,
 				EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */,
-				EA545CD11F03AE0E00831063 /* Resnet50.mlmodel in Sources */,
 				EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +356,9 @@
 		};
 		EA5144221F00477E0044E38D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U8333665R6;
 				INFOPLIST_FILE = Blinking_LED_detection/Info.plist;
@@ -289,7 +372,9 @@
 		};
 		EA5144231F00477E0044E38D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8343B57B88AE687726AFDC8A /* Pods-Blinking_LED_detection.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U8333665R6;
 				INFOPLIST_FILE = Blinking_LED_detection/Info.plist;

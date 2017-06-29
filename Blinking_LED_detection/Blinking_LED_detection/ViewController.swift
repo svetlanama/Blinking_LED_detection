@@ -12,6 +12,7 @@ import AVFoundation
 import MetalKit
 import QuartzCore
 import CoreImage
+//import GPUImage
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -76,16 +77,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "MyQueue"))
         self.captureSession.addOutput(videoOutput)
         
-        // set up the vision model
-        guard let visionModel = try? VNCoreMLModel(for: Resnet50().model) else {
-            fatalError("Could not load model")
-        }
-        
-        // set up the request using our vision model
-        let classificationRequest = VNCoreMLRequest(model: visionModel, completionHandler: handleClassifications)
-        classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOptionCenterCrop
-        visionRequests = [classificationRequest]
-        
         // begin the session
         self.captureSession.startRunning()
     }
@@ -95,49 +86,85 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         cameraLayer.frame = self.cameraView?.bounds ?? .zero
     }
     
+    lazy var rectanglesRequest: VNDetectRectanglesRequest = {
+        return VNDetectRectanglesRequest(completionHandler: self.handleRectangles)
+    }()
+    
+    func handleRectangles(request: VNRequest, error: Error?) {
+        guard let observations = request.results as? [VNRectangleObservation]
+            else {
+                print("unexpected result type from VNDetectRectanglesRequest")
+                return
+                //fatalError("unexpected result type from VNDetectRectanglesRequest")
+                //
+        }
+        guard let detectedRectangle = observations.first else {
+           // DispatchQueue.main.async {
+                print("not detected rect")
+            //}
+            return
+        }
+        
+          print("=== detected rect ===")
+    }
+    
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         connection.videoOrientation = AVCaptureVideoOrientation.portrait
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
-        
-        DispatchQueue.main.async { [unowned self] in
         let correctedImage = uiImage
             .applyingFilter("CIColorControls", withInputParameters: [
                 kCIInputSaturationKey: 0,
                 kCIInputContrastKey: 2.5,
                 kCIInputBrightnessKey: -1.53
                 ])
+        
+        test(image: UIImage(ciImage: uiImage))
+        DispatchQueue.main.async { [weak self] in //unowned
+            
             //.applyingFilter("CIColorInvert", withInputParameters: nil)
-            self.frameImageView.image = UIImage(ciImage: correctedImage)
+            self?.frameImageView.image = UIImage(ciImage: correctedImage)
+            
             
 //            var requestOptions: [VNImageOption: Any] = [:]
-//           let imageRequestHandler = VNImageRequestHandler(image: correctedImage, options: requestOptions)
-//            do {
-//                try imageRequestHandler.perform(self.visionRequests)
-//            } catch {
-//                print(error)
+//            let handler = VNImageRequestHandler(ciImage: correctedImage, options: requestOptions)
+//            DispatchQueue.global(qos: .userInteractive).async {
+//                do {
+//                    try handler.perform([self.rectanglesRequest])
+//                } catch {
+//                    print(error)
+//                }
 //            }
             //self.captured(ciImage: uiImage)
         }
     }
     
-    func handleClassifications(request: VNRequest, error: Error?) {
-        if let theError = error {
-            print("Error: \(theError.localizedDescription)")
-            return
-        }
-        guard let observations = request.results else {
-            print("No results")
-            return
-        }
-        let classifications = observations[0...4] // top 4 results
-            .flatMap({ $0 as? VNClassificationObservation })
-            .map({ "\($0.identifier) \(($0.confidence * 100.0).rounded())" })
-            .joined(separator: "\n")
+    func test(image: UIImage) -> Bool {
+       // var result  = 0
+       // var i = 0
+        let color = image.pixelColor(atLocation: CGPoint(x: 15, y: 15))
+            print("color:", color)
+            
         
-        DispatchQueue.main.async {
-            print("result: \(classifications)")
-            //self.resultView.text = classifications
+        for  y in 0..<image.size.height.toInt() {
+            for x in 0..<image.size.width.toInt() {
+                
+//                let color = self.color   [self colorAt:image atX:x andY:y]
+//
+//                const CGFloat * colors = CGColorGetComponents(color.CGColor)
+//                let r = colors[0]
+//                let g = colors[1]
+//                let b = colors[2]
+//                result += .299 * r + 0.587 * g + 0.114 * b
+//                i++
+            }
         }
+        //float brightness = result / (float)i;
+        // NSLog(@"Image Brightness : %f",brightness);
+//        if (brightness > 0.8 || brightness < 0.3) {
+//            return false
+//        }
+        return true
     }
     
     override func didReceiveMemoryWarning() {
@@ -145,3 +172,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 }
 
+extension UIImage {
+    
+    
+    func pixelColor(atLocation point: CGPoint) -> UIColor? {
+        guard let cgImage = cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
+        
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        let bytesPerPixel = cgImage.bitsPerPixel / 8
+        
+        let pixelInfo: Int = ((cgImage.bytesPerRow * Int(point.y)) + (Int(point.x) * bytesPerPixel))
+        
+        let b = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+        let r = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+    
+    
+}
+
+extension CGFloat {
+    func toInt() -> Int {
+        return Int(self)
+    }
+}
