@@ -12,7 +12,6 @@ import AVFoundation
 import MetalKit
 import QuartzCore
 import CoreImage
-//import GPUImage
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
@@ -20,7 +19,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet private weak var binCameraView: UIView!
     private let context = CIContext()
     private var count = 0
-   // var visionRequests = [VNRequest]()
     
     @IBOutlet weak var frameImageView: UIImageView!
     
@@ -59,17 +57,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         // begin the session
         self.captureSession.startRunning()
-        
-        
-        // set up the vision model
-//        guard let visionModel = try? VNCoreMLModel(for: Inceptionv3().model) else {
-//            fatalError("Could not load model")
-//        }
-//        // set up the request using our vision model
-//        let classificationRequest = VNCoreMLRequest(model: visionModel, completionHandler: handleClassifications)
-//        classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOptionCenterCrop
-//        visionRequests = [classificationRequest]
-        
+
         //test(image: UIImage(named: "IMG_2259.PNG")!)
        // searchRectangle(ciImage: CIImage(image: UIImage(named: "black14.jpg")!)!)
     }
@@ -108,9 +96,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             .applyingFilter("CIColorControls", withInputParameters: [
                 kCIInputSaturationKey: 0,
                 kCIInputContrastKey: 2.5,
-                kCIInputBrightnessKey: -1.53
+                kCIInputBrightnessKey: -1.54
                 ])
-         searchRectangle(ciImage: correctedImage)
+         searchLightSpot(ciImage: correctedImage)
        // test(image: UIImage(named: "IMG_2259.PNG")!)
         DispatchQueue.main.async { [weak self] in //unowned
             
@@ -119,7 +107,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-    func searchRectangle(ciImage: CIImage) {
+    func searchLightSpot(ciImage: CIImage) {
         var requestOptions: [VNImageOption: Any] = [:]
         let handler = VNImageRequestHandler(ciImage: ciImage, options: requestOptions)
         DispatchQueue.global(qos: .userInteractive).async {
@@ -130,27 +118,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
     }
-    
-    
-    /*func handleClassifications(request: VNRequest, error: Error?) {
-        if let theError = error {
-            print("Error: \(theError.localizedDescription)")
-            return
-        }
-        guard let observations = request.results else {
-            print("No results")
-            return
-        }
-        let classifications = observations[0...4] // top 4 results
-            .flatMap({ $0 as? VNClassificationObservation })
-            .map({ "\($0.identifier) \(($0.confidence * 100.0).rounded())" })
-            .joined(separator: "\n")
-        
-        print("Object detected:", classifications)
-//        DispatchQueue.main.async {
-//            self.resultView.text = classifications
-//        }
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -185,59 +152,7 @@ extension CGFloat {
 
 
 
-/* func createHistorgamm(inputImage: UIImage) {
- 
- // let primaryView = GPUImageView(frame: binCameraView.frame)
- //  view = primaryView
- 
- var sourcePicture = GPUImagePicture(image: inputImage, smoothlyScaleOutput: true)
- 
- // Creating another view to show histogram
- let histView = GPUImageView(frame: CGRect(x: 0, y: 0,width: 200, height: 200))
- histView.backgroundColor = UIColor.red
- binCameraView.addSubview(histView)
- binCameraView.bringSubview(toFront: histView)
- 
- // Create histogram filter and generator and point it to histogram view
- let histFilter = GPUImageHistogramFilter()
- let histGenerator = GPUImageHistogramGenerator()
- histGenerator.forceProcessing(at: CGSizeMake(200.0, 200.0))
- histGenerator.addTarget(histFilter)
- 
- 
- histFilter.addTarget(histGenerator)
- // Note target - hist view
- histGenerator.addTarget(histView)
- 
- // Setup sepia filter just to show main picture
- let sepiaFilter = GPUImageSepiaFilter()
- sepiaFilter.forceProcessing(at: primaryView.sizeInPixels)
- 
- sourcePicture?.addTarget(sepiaFilter)
- // Note target - main view
- sepiaFilter.addTarget(primaryView)
- 
- sourcePicture?.processImage()
- 
- }
-
-func createHistorgamm(inputImage: UIImage) {
-    let filter = GPUImageHistogramFilter(HistogramType.luminance)
-    
-    let histogramGraph = GPUImageHistogramGenerator()
-    histogramGraph.forceProcessingAtSize(CGSize(200.0, 200.0))
-    filter.addTaget(histogramGraph)
-    
-    let blendFilter =  GPUImageAlphaBlendFilter()
-    blendFilter.mix = 0.75
-    blendFilter.forceProcessingAtSize(CGSize(200.0, 200.0))
-    cameraView.addTarget(blendFilter)
-    histogramGraph.addTarget(blendFilter)
-    blendFilter.addTagret(filterView)
-    
-}
- 
- 
+/*
  
  func test(image: UIImage) -> Bool {
  // var result  = 0
