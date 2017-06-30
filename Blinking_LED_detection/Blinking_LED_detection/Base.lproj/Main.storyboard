@@ -36,10 +36,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="leading" secondItem="40K-h6-Nns" secondAttribute="leading" id="6Pb-Q3-31u"/>
-                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="top" secondItem="40K-h6-Nns" secondAttribute="top" id="8cW-zp-3Tn"/>
-                                    <constraint firstAttribute="bottom" secondItem="qzz-MK-ZZz" secondAttribute="bottom" id="L7H-78-hNj"/>
-                                    <constraint firstAttribute="trailing" secondItem="qzz-MK-ZZz" secondAttribute="trailing" id="Wxq-sa-aCG"/>
+                                    <constraint firstAttribute="bottom" secondItem="qzz-MK-ZZz" secondAttribute="bottom" id="39o-Oj-bgd"/>
+                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="leading" secondItem="40K-h6-Nns" secondAttribute="leading" id="EXQ-tp-Zjk"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzz-MK-ZZz" secondAttribute="trailing" id="aT8-8J-a2z"/>
+                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="top" secondItem="40K-h6-Nns" secondAttribute="top" id="eTH-ik-IKC"/>
                                 </constraints>
                             </view>
                         </subviews>
