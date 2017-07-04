@@ -15,6 +15,23 @@ import CoreImage
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    private var breakCounter = 0
+    private let imageProcessing = ImageProcessing()
+    private var flag = false
+    
+    @IBOutlet private weak var focusView: UIView! {
+        didSet {
+            focusView.layer.borderColor = UIColor.yellow.cgColor
+            focusView.layer.borderWidth = 1
+        }
+    }
+    @IBOutlet private weak var rectView: UIView! {
+        didSet {
+            rectView.layer.borderColor = UIColor.green.cgColor
+            rectView.layer.borderWidth = 1
+        }
+    }
+    
     @IBOutlet private weak var cameraView: UIView!
     @IBOutlet private weak var binCameraView: UIView!
     private let context = CIContext()
@@ -30,6 +47,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     private lazy var cameraLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
+    let captureDevice = AVCaptureDevice.default(for: .video)
     
     private lazy var captureSession: AVCaptureSession = {
         let session = AVCaptureSession()
@@ -38,6 +56,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let backCamera = AVCaptureDevice.default(for: .video),
             let input = try? AVCaptureDeviceInput(device: backCamera)
             else { return session }
+        
         session.addInput(input)
         
         return session
@@ -54,12 +73,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "MyQueue"))
         self.captureSession.addOutput(videoOutput)
+        setUpFocus()
         
         // begin the session
         self.captureSession.startRunning()
-
-        //test(image: UIImage(named: "IMG_2259.PNG")!)
-       // searchRectangle(ciImage: CIImage(image: UIImage(named: "black14.jpg")!)!)
+        
+        view.bringSubview(toFront: focusView)
+        //view.bringSubview(toFront: rectView)
+    }
+    
+    func setUpFocus() {
+        let focus_x = cameraView.frame.size.width / 2
+        let focus_y = cameraView.frame.size.height / 2
+        
+        if (captureDevice!.isFocusModeSupported(.autoFocus) && captureDevice!.isFocusPointOfInterestSupported) {
+            do {
+                try captureDevice?.lockForConfiguration()
+                captureDevice?.focusMode = .autoFocus
+                captureDevice?.focusPointOfInterest = CGPoint(x: focus_x, y: focus_y)
+                
+                captureDevice?.exposurePointOfInterest =  CGPoint(x: focus_x, y: focus_y)
+                captureDevice?.exposureMode = .continuousAutoExposure
+                
+                //                if (captureDevice!.isExposureModeSupported(.autoExpose) && captureDevice!.isExposurePointOfInterestSupported) {
+                //                    captureDevice?.exposureMode = .autoExpose
+                //                    captureDevice?.exposurePointOfInterest = CGPoint(x: focus_x, y: focus_y)
+                //                }
+                
+                captureDevice?.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -78,32 +123,47 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 return
         }
         guard let detectedObject = observations.first else {
-           // DispatchQueue.main.async {
-                print("not detected object")
-            //}
+            print("not detected object")
+            if flag {
+                breakCounter += 1
+                print("breakCounter: \(breakCounter)")
+                if breakCounter > 5 {
+                    imageProcessing.defineSignalAndBreak()
+                } else {
+                    imageProcessing.addCounter()
+                }
+            }
             return
         }
-        
         print("=== detected object ===", detectedObject)
+        flag = true
+        breakCounter = 0
+        imageProcessing.addCounter()
+        
+        //        var transformedRect = detectedObject.boundingBox
+        //        transformedRect.origin.y = 1 - transformedRect.origin.y
+        //        var convertedRect = self.cameraLayer.layerRectConverted(fromMetadataOutputRect: transformedRect)
+        //        rectView.frame = convertedRect
     }
-    
-    
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         connection.videoOrientation = AVCaptureVideoOrientation.portrait
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
+        
         let correctedImage = uiImage
             .applyingFilter("CIColorControls", withInputParameters: [
                 kCIInputSaturationKey: 0,
-                kCIInputContrastKey: 2.5,
+                kCIInputContrastKey: 4.5,
                 kCIInputBrightnessKey: -1.54
                 ])
-         searchLightSpot(ciImage: correctedImage)
-       // test(image: UIImage(named: "IMG_2259.PNG")!)
-        DispatchQueue.main.async { [weak self] in //unowned
-            
+        //.applyingFilter("CISharpenLuminance", withInputParameters: [
+        //                kCIInputSharpnessKey: 0.5
+        //                ])
         //.applyingFilter("CIColorInvert", withInputParameters: nil)
-           self?.frameImageView.image = UIImage(ciImage: correctedImage)
+        self.searchLightSpot(ciImage: correctedImage)
+        
+        DispatchQueue.main.async { [unowned self] in //unowned
+            self.frameImageView.image = UIImage(ciImage: correctedImage)
         }
     }
     
@@ -112,12 +172,54 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let handler = VNImageRequestHandler(ciImage: ciImage, options: requestOptions)
         DispatchQueue.global(qos: .userInteractive).async {
             do {
-                try handler.perform([self.rectanglesRequest])//[self.rectanglesRequest]) self.visionRequests
+                try handler.perform([self.rectanglesRequest])
             } catch {
                 print(error)
             }
         }
     }
+    
+    //
+    //    @IBAction func tapToFocus(_ sender: UITapGestureRecognizer) {
+    //        if (sender.state == .ended) {
+    //            let thisFocusPoint = sender.location(in: cameraView)
+    //
+    //            print("touch to focus ", thisFocusPoint)
+    //
+    //            let focus_x = thisFocusPoint.x / cameraView.frame.size.width
+    //            let focus_y = thisFocusPoint.y / cameraView.frame.size.height
+    //
+    //            if (captureDevice!.isFocusModeSupported(.autoFocus) && captureDevice!.isFocusPointOfInterestSupported) {
+    //                do {
+    //                    try captureDevice?.lockForConfiguration()
+    //                    captureDevice?.focusMode = .autoFocus
+    //                    captureDevice?.focusPointOfInterest = CGPoint(x: focus_x, y: focus_y)
+    //
+    //                    captureDevice?.exposurePointOfInterest =  CGPoint(x: focus_x, y: focus_y)
+    //                    captureDevice?.exposureMode = .continuousAutoExposure
+    //
+    //                    //                    if (captureDevice!.isExposureModeSupported(.autoExpose) && captureDevice!.isExposurePointOfInterestSupported) {
+    //                    //                        captureDevice?.exposureMode = .autoExpose;
+    //                    //                        captureDevice?.exposurePointOfInterest = CGPoint(x: focus_x, y: focus_y);
+    //                    //                    }
+    //
+    //                    captureDevice?.unlockForConfiguration()
+    //                } catch {
+    //                    print(error)
+    //                }
+    //            }
+    //
+    //
+    //            // calculate view rect
+    //            var transformedRect = CGRect(x: focus_x - 50, y: focus_y - 50, width: 100, height: 100)
+    //            transformedRect.origin.y = 1 - transformedRect.origin.y
+    //            let convertedRect = self.cameraLayer.layerRectConverted(fromMetadataOutputRect: transformedRect)
+    //
+    //            // move the highlight view
+    //            self.highlightView?.frame = convertedRect
+    //            view.bringSubview(toFront: highlightView!)
+    //        }
+    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

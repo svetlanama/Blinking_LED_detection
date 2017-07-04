@@ -21,6 +21,7 @@
 		EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA79E9281F05787E000F51A3 /* Resnet50.mlmodel */; };
 		EA79E92F1F0584AF000F51A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E92E1F0584AF000F51A3 /* 2.PNG */; };
 		EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA95D3521F05A71C008C3C8E /* black14.jpg */; };
+		EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		EA79E92E1F0584AF000F51A3 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = ../../../../Downloads/2.PNG; sourceTree = "<group>"; };
 		EA95D3521F05A71C008C3C8E /* black14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = black14.jpg; path = ../../../../Downloads/black14.jpg; sourceTree = "<group>"; };
+		EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				EA5144121F00477E0044E38D /* AppDelegate.swift */,
 				EA5144141F00477E0044E38D /* ViewController.swift */,
+				EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */,
 				EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */,
 				EA95D3521F05A71C008C3C8E /* black14.jpg */,
 				EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */,
@@ -253,6 +256,7 @@
 			files = (
 				EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */,
 				EA5144151F00477E0044E38D /* ViewController.swift in Sources */,
+				EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */,
 				EA79E92C1F0583F4000F51A3 /* Inceptionv3.mlmodel in Sources */,
 				EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */,
 				EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */,
