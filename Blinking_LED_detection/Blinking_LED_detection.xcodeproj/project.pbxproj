@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E7D5FBA8A360261C00D43BD8 /* libPods-Blinking_LED_detection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 47796002C16C2DD43F39135E /* libPods-Blinking_LED_detection.a */; };
+		5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */; };
+		EA177B631F0C4EA1008FEA30 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = EA177B621F0C4EA1008FEA30 /* 3.png */; };
 		EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */; };
 		EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144121F00477E0044E38D /* AppDelegate.swift */; };
 		EA5144151F00477E0044E38D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144141F00477E0044E38D /* ViewController.swift */; };
@@ -21,13 +22,19 @@
 		EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA79E9281F05787E000F51A3 /* Resnet50.mlmodel */; };
 		EA79E92F1F0584AF000F51A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E92E1F0584AF000F51A3 /* 2.PNG */; };
 		EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA95D3521F05A71C008C3C8E /* black14.jpg */; };
+		EAAD1F1E1F0BFB6800FAA075 /* Blob.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD1F1D1F0BFB6800FAA075 /* Blob.png */; };
+		EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */; };
+		EAE3608E1F0BDE1E00495545 /* flash.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EAE3608D1F0BDE1E00495545 /* flash.PNG */; };
+		EAE360901F0BDF2A00495545 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */; };
 		EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		47796002C16C2DD43F39135E /* libPods-Blinking_LED_detection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Blinking_LED_detection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blinking_LED_detection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8343B57B88AE687726AFDC8A /* Pods-Blinking_LED_detection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.release.xcconfig"; sourceTree = "<group>"; };
 		D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.debug.xcconfig"; sourceTree = "<group>"; };
+		EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blinking_LED_detection-Bridging-Header.h"; sourceTree = "<group>"; };
+		EA177B621F0C4EA1008FEA30 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../../Downloads/3.png; sourceTree = "<group>"; };
 		EA1E38561F047981003E037A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameExtractor.swift; sourceTree = "<group>"; };
 		EA51440F1F00477E0044E38D /* Blinking_LED_detection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blinking_LED_detection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +56,11 @@
 		EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		EA79E92E1F0584AF000F51A3 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = ../../../../Downloads/2.PNG; sourceTree = "<group>"; };
 		EA95D3521F05A71C008C3C8E /* black14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = black14.jpg; path = ../../../../Downloads/black14.jpg; sourceTree = "<group>"; };
+		EAAD1F1D1F0BFB6800FAA075 /* Blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blob.png; path = ../../../../Downloads/Blob.png; sourceTree = "<group>"; };
+		EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageHelper.h; sourceTree = "<group>"; };
+		EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageHelper.m; sourceTree = "<group>"; };
+		EAE3608D1F0BDE1E00495545 /* flash.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flash.PNG; path = ../../../../Downloads/flash.PNG; sourceTree = "<group>"; };
+		EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7D5FBA8A360261C00D43BD8 /* libPods-Blinking_LED_detection.a in Frameworks */,
+				5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +93,17 @@
 				EA6EE3601F047A1400732508 /* Foundation.framework */,
 				EA6EE35E1F0479F700732508 /* CoreMedia.framework */,
 				EA1E38561F047981003E037A /* AVFoundation.framework */,
-				47796002C16C2DD43F39135E /* libPods-Blinking_LED_detection.a */,
+				09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA177B581F0C4D77008FEA30 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = images;
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		EA5144061F00477E0044E38D = {
@@ -107,11 +127,15 @@
 		EA5144111F00477E0044E38D /* Blinking_LED_detection */ = {
 			isa = PBXGroup;
 			children = (
+				EA177B581F0C4D77008FEA30 /* images */,
 				EA5144121F00477E0044E38D /* AppDelegate.swift */,
 				EA5144141F00477E0044E38D /* ViewController.swift */,
 				EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */,
+				EAAD1F1D1F0BFB6800FAA075 /* Blob.png */,
 				EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */,
+				EA177B621F0C4EA1008FEA30 /* 3.png */,
 				EA95D3521F05A71C008C3C8E /* black14.jpg */,
+				EAE3608D1F0BDE1E00495545 /* flash.PNG */,
 				EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */,
 				EA79E9241F054612000F51A3 /* faces2.jpeg */,
 				EA79E9231F054562000F51A3 /* Arduino.JPG */,
@@ -123,6 +147,10 @@
 				EA5144191F00477E0044E38D /* Assets.xcassets */,
 				EA51441B1F00477E0044E38D /* LaunchScreen.storyboard */,
 				EA51441E1F00477E0044E38D /* Info.plist */,
+				EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */,
+				EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */,
+				EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */,
+				EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */,
 			);
 			path = Blinking_LED_detection;
 			sourceTree = "<group>";
@@ -162,6 +190,7 @@
 				TargetAttributes = {
 					EA51440E1F00477E0044E38D = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -188,9 +217,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA177B631F0C4EA1008FEA30 /* 3.png in Resources */,
 				EA51441D1F00477E0044E38D /* LaunchScreen.storyboard in Resources */,
 				EA51441A1F00477E0044E38D /* Assets.xcassets in Resources */,
+				EAAD1F1E1F0BFB6800FAA075 /* Blob.png in Resources */,
 				EA79E9271F054661000F51A3 /* IMG_2259.PNG in Resources */,
+				EAE3608E1F0BDE1E00495545 /* flash.PNG in Resources */,
 				EA79E92A1F057CC5000F51A3 /* 1.PNG in Resources */,
 				EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */,
 				EA5144181F00477E0044E38D /* Main.storyboard in Resources */,
@@ -255,6 +287,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */,
+				EAE360901F0BDF2A00495545 /* UIImage+Extension.swift in Sources */,
+				EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */,
 				EA5144151F00477E0044E38D /* ViewController.swift in Sources */,
 				EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */,
 				EA79E92C1F0583F4000F51A3 /* Inceptionv3.mlmodel in Sources */,
@@ -396,11 +430,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U8333665R6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GPUImage\"",
+				);
 				INFOPLIST_FILE = Blinking_LED_detection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Blinking-LED-detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -412,11 +454,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U8333665R6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/**",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/GPUImage\"",
+				);
 				INFOPLIST_FILE = Blinking_LED_detection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Blinking-LED-detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/$(PROJECT_NAME)-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

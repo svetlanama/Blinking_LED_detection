@@ -1,0 +1,6 @@
+framework module Pods_Blinking_LED_detection {
+  umbrella header "Pods-Blinking_LED_detection-umbrella.h"
+
+  export *
+  module * { export * }
+}

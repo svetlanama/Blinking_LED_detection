@@ -1,9 +1,9 @@
 # Uncomment the next line to define a global platform for your project
-#platform :ios, '11.0'
-#use_frameworks!
+platform :ios, '11.0'
+use_frameworks!
 
 target 'Blinking_LED_detection' do
-    #pod 'GPUImage'
+    pod 'GPUImage'
     #pod 'EVGPUImage2'
     
 end

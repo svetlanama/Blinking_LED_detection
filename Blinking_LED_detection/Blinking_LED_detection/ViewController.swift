@@ -12,23 +12,16 @@ import AVFoundation
 import MetalKit
 import QuartzCore
 import CoreImage
+import GPUImage
+
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    private var breakCounter = 0
-    private let imageProcessing = ImageProcessing()
-    private var flag = false
-    
+    //let gpuImageHelper = GPUImageHelper()
     @IBOutlet private weak var focusView: UIView! {
         didSet {
             focusView.layer.borderColor = UIColor.yellow.cgColor
             focusView.layer.borderWidth = 1
-        }
-    }
-    @IBOutlet private weak var rectView: UIView! {
-        didSet {
-            rectView.layer.borderColor = UIColor.green.cgColor
-            rectView.layer.borderWidth = 1
         }
     }
     
@@ -79,7 +72,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.captureSession.startRunning()
         
         view.bringSubview(toFront: focusView)
-        //view.bringSubview(toFront: rectView)
+        
+        let image = UIImage(named: "3.png")  //"Blob.png")//
+        
+        //let corectedImage = performImageBinarization(uiImage:ciimage)
+        //let img = UIImage(ciImage: corectedImage)
+        //var img = image?.grayscaleImage(contrast: 1.0)
+        
+        //works
+//         let binImage = image!.doBinarize()
+//         frameImageView.image = binImage
+//         guard let ciimage = CIImage(image: binImage!) else { return }
+//         searchLightSpot(ciImage: ciimage)
+//
+//         imageColorAnalyze(img: binImage!)
     }
     
     func setUpFocus() {
@@ -124,47 +130,35 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         guard let detectedObject = observations.first else {
             print("not detected object")
-            if flag {
-                breakCounter += 1
-                print("breakCounter: \(breakCounter)")
-                if breakCounter > 5 {
-                    imageProcessing.defineSignalAndBreak()
-                } else {
-                    imageProcessing.addCounter()
-                }
-            }
             return
         }
         print("=== detected object ===", detectedObject)
-        flag = true
-        breakCounter = 0
-        imageProcessing.addCounter()
-        
-        //        var transformedRect = detectedObject.boundingBox
-        //        transformedRect.origin.y = 1 - transformedRect.origin.y
-        //        var convertedRect = self.cameraLayer.layerRectConverted(fromMetadataOutputRect: transformedRect)
-        //        rectView.frame = convertedRect
     }
     
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+   
+    
+   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         connection.videoOrientation = AVCaptureVideoOrientation.portrait
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
-        let correctedImage = uiImage
-            .applyingFilter("CIColorControls", withInputParameters: [
-                kCIInputSaturationKey: 0,
-                kCIInputContrastKey: 4.5,
-                kCIInputBrightnessKey: -1.54
-                ])
-        //.applyingFilter("CISharpenLuminance", withInputParameters: [
-        //                kCIInputSharpnessKey: 0.5
-        //                ])
-        //.applyingFilter("CIColorInvert", withInputParameters: nil)
-        self.searchLightSpot(ciImage: correctedImage)
+    
+        imageRecognizer(image: UIImage(ciImage: uiImage))
+    
+//        DispatchQueue.main.async { [unowned self] in //unowned
+//            self.frameImageView.image = UIImage(ciImage: correctedImage)
+//        }
+    }
+    
+    func imageRecognizer(image: UIImage) {
+        let binImage = image.doBinarize()
         
-        DispatchQueue.main.async { [unowned self] in //unowned
-            self.frameImageView.image = UIImage(ciImage: correctedImage)
+        DispatchQueue.main.async { [unowned self] in
+           self.frameImageView.image = binImage
         }
+        guard let ciimage = CIImage(image: binImage!) else { return }
+        searchLightSpot(ciImage: ciimage)
+        
+        //imageColorAnalyze(img: binImage!)
     }
     
     func searchLightSpot(ciImage: CIImage) {
@@ -179,109 +173,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-    //
-    //    @IBAction func tapToFocus(_ sender: UITapGestureRecognizer) {
-    //        if (sender.state == .ended) {
-    //            let thisFocusPoint = sender.location(in: cameraView)
-    //
-    //            print("touch to focus ", thisFocusPoint)
-    //
-    //            let focus_x = thisFocusPoint.x / cameraView.frame.size.width
-    //            let focus_y = thisFocusPoint.y / cameraView.frame.size.height
-    //
-    //            if (captureDevice!.isFocusModeSupported(.autoFocus) && captureDevice!.isFocusPointOfInterestSupported) {
-    //                do {
-    //                    try captureDevice?.lockForConfiguration()
-    //                    captureDevice?.focusMode = .autoFocus
-    //                    captureDevice?.focusPointOfInterest = CGPoint(x: focus_x, y: focus_y)
-    //
-    //                    captureDevice?.exposurePointOfInterest =  CGPoint(x: focus_x, y: focus_y)
-    //                    captureDevice?.exposureMode = .continuousAutoExposure
-    //
-    //                    //                    if (captureDevice!.isExposureModeSupported(.autoExpose) && captureDevice!.isExposurePointOfInterestSupported) {
-    //                    //                        captureDevice?.exposureMode = .autoExpose;
-    //                    //                        captureDevice?.exposurePointOfInterest = CGPoint(x: focus_x, y: focus_y);
-    //                    //                    }
-    //
-    //                    captureDevice?.unlockForConfiguration()
-    //                } catch {
-    //                    print(error)
-    //                }
-    //            }
-    //
-    //
-    //            // calculate view rect
-    //            var transformedRect = CGRect(x: focus_x - 50, y: focus_y - 50, width: 100, height: 100)
-    //            transformedRect.origin.y = 1 - transformedRect.origin.y
-    //            let convertedRect = self.cameraLayer.layerRectConverted(fromMetadataOutputRect: transformedRect)
-    //
-    //            // move the highlight view
-    //            self.highlightView?.frame = convertedRect
-    //            view.bringSubview(toFront: highlightView!)
-    //        }
-    //    }
-    
+    func imageColorAnalyze(img: UIImage) {
+        DispatchQueue.global(qos: .background).async { [weak self]
+            () -> Void in
+            
+            for  y in 0..<img.size.height.toInt() {
+                for x in 0..<img.size.width.toInt() {
+                    
+                    let color = img.pixelColor(atLocation: CGPoint(x: x, y: y))
+                    print("color: ", color ?? "no color")
+                }
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
-extension UIImage {
-    
-    
-    func pixelColor(atLocation point: CGPoint) -> UIColor? {
-        guard let cgImage = cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
-        
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        
-        let bytesPerPixel = cgImage.bitsPerPixel / 8
-        let pixelInfo: Int = ((cgImage.bytesPerRow * Int(point.y)) + (Int(point.x) * bytesPerPixel))
-        
-        let b = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-        let r = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-        
-        return UIColor(red: r, green: g, blue: b, alpha: a)
-    }
-}
-
 extension CGFloat {
-    func toInt() -> Int {
-        return Int(self)
-    }
+       func toInt() -> Int {
+               return Int(self)
+           }
+    
 }
-
-
-
-/*
- 
- func test(image: UIImage) -> Bool {
- // var result  = 0
- // var i = 0
- 
- 
- 
- for  y in 0..<image.size.height.toInt() {
- print("===height===")
- for x in 0..<image.size.width.toInt() {
- let color = image.pixelColor(atLocation: CGPoint(x: x, y: y))
- print("color:", color)
- //                let color = self.color   [self colorAt:image atX:x andY:y]
- //
- //                const CGFloat * colors = CGColorGetComponents(color.CGColor)
- //                let r = colors[0]
- //                let g = colors[1]
- //                let b = colors[2]
- //                result += .299 * r + 0.587 * g + 0.114 * b
- //                i++
- }
- }
- //float brightness = result / (float)i;
- // NSLog(@"Image Brightness : %f",brightness);
- //        if (brightness > 0.8 || brightness < 0.3) {
- //            return false
- //        }
- return true
- }
- */
