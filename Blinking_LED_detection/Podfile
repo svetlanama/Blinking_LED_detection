@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'Blinking_LED_detection' do
     pod 'GPUImage'
+    #pod 'EasyImage'
     #pod 'EVGPUImage2'
     
 end

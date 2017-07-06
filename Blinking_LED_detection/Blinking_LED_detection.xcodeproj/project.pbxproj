@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */; };
 		EA177B631F0C4EA1008FEA30 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = EA177B621F0C4EA1008FEA30 /* 3.png */; };
+		EA177B651F0C682F008FEA30 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */; };
+		EA2B093C1F0D216500F5015D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B093B1F0D216500F5015D /* UIColor+Extension.swift */; };
 		EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */; };
 		EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144121F00477E0044E38D /* AppDelegate.swift */; };
 		EA5144151F00477E0044E38D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5144141F00477E0044E38D /* ViewController.swift */; };
@@ -23,11 +25,72 @@
 		EA79E92F1F0584AF000F51A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E92E1F0584AF000F51A3 /* 2.PNG */; };
 		EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA95D3521F05A71C008C3C8E /* black14.jpg */; };
 		EAAD1F1E1F0BFB6800FAA075 /* Blob.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD1F1D1F0BFB6800FAA075 /* Blob.png */; };
+		EAD74F2E1F0DC31200F4E384 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD74F241F0DC12500F4E384 /* EasyImagy.framework */; };
+		EAD74F2F1F0DC31200F4E384 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAD74F241F0DC12500F4E384 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */; };
 		EAE3608E1F0BDE1E00495545 /* flash.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EAE3608D1F0BDE1E00495545 /* flash.PNG */; };
 		EAE360901F0BDF2A00495545 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */; };
 		EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAD74F231F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D65FF0711AFB66C7006CC985;
+			remoteInfo = "EasyImagy-iOS";
+		};
+		EAD74F251F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D69C33A61C8D3D2A007985D4;
+			remoteInfo = "EasyImagy-OSX";
+		};
+		EAD74F271F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D65FF07C1AFB66C7006CC985;
+			remoteInfo = "EasyImagy-iOS Tests";
+		};
+		EAD74F291F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D69C33AF1C8D3D2A007985D4;
+			remoteInfo = "EasyImagy-OSX Tests";
+		};
+		EAD74F2B1F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D6C2EDF81B031A0900E2B876;
+			remoteInfo = EasyImagySample;
+		};
+		EAD74F301F0DC31200F4E384 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D65FF0701AFB66C7006CC985;
+			remoteInfo = "EasyImagy-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAD74F321F0DC31200F4E384 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAD74F2F1F0DC31200F4E384 /* EasyImagy.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blinking_LED_detection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,7 +98,9 @@
 		D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.debug.xcconfig"; sourceTree = "<group>"; };
 		EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blinking_LED_detection-Bridging-Header.h"; sourceTree = "<group>"; };
 		EA177B621F0C4EA1008FEA30 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../../Downloads/3.png; sourceTree = "<group>"; };
+		EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		EA1E38561F047981003E037A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EA2B093B1F0D216500F5015D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameExtractor.swift; sourceTree = "<group>"; };
 		EA51440F1F00477E0044E38D /* Blinking_LED_detection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blinking_LED_detection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5144121F00477E0044E38D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +122,7 @@
 		EA79E92E1F0584AF000F51A3 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = ../../../../Downloads/2.PNG; sourceTree = "<group>"; };
 		EA95D3521F05A71C008C3C8E /* black14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = black14.jpg; path = ../../../../Downloads/black14.jpg; sourceTree = "<group>"; };
 		EAAD1F1D1F0BFB6800FAA075 /* Blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blob.png; path = ../../../../Downloads/Blob.png; sourceTree = "<group>"; };
+		EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyImagy.xcodeproj; path = "../../../../Downloads/EasyImagy-swift-3/EasyImagy.xcodeproj"; sourceTree = "<group>"; };
 		EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageHelper.h; sourceTree = "<group>"; };
 		EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageHelper.m; sourceTree = "<group>"; };
 		EAE3608D1F0BDE1E00495545 /* flash.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flash.PNG; path = ../../../../Downloads/flash.PNG; sourceTree = "<group>"; };
@@ -69,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD74F2E1F0DC31200F4E384 /* EasyImagy.framework in Frameworks */,
 				5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,14 +165,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EA177B581F0C4D77008FEA30 /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = images;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		EA5144061F00477E0044E38D = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +186,10 @@
 		EA5144111F00477E0044E38D /* Blinking_LED_detection */ = {
 			isa = PBXGroup;
 			children = (
-				EA177B581F0C4D77008FEA30 /* images */,
 				EA5144121F00477E0044E38D /* AppDelegate.swift */,
 				EA5144141F00477E0044E38D /* ViewController.swift */,
+				EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */,
+				EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */,
 				EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */,
 				EAAD1F1D1F0BFB6800FAA075 /* Blob.png */,
 				EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */,
@@ -148,11 +208,24 @@
 				EA51441B1F00477E0044E38D /* LaunchScreen.storyboard */,
 				EA51441E1F00477E0044E38D /* Info.plist */,
 				EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */,
+				EA2B093B1F0D216500F5015D /* UIColor+Extension.swift */,
 				EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */,
 				EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */,
 				EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */,
 			);
 			path = Blinking_LED_detection;
+			sourceTree = "<group>";
+		};
+		EAD74F1C1F0DC12500F4E384 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAD74F241F0DC12500F4E384 /* EasyImagy.framework */,
+				EAD74F261F0DC12500F4E384 /* EasyImagy.framework */,
+				EAD74F281F0DC12500F4E384 /* EasyImagyTests.xctest */,
+				EAD74F2A1F0DC12500F4E384 /* EasyImagyTests.xctest */,
+				EAD74F2C1F0DC12500F4E384 /* EasyImagySample.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,10 +241,12 @@
 				EA51440D1F00477E0044E38D /* Resources */,
 				6F92446E845C4B011520D305 /* [CP] Embed Pods Frameworks */,
 				E62E32509FF338CC37D7061E /* [CP] Copy Pods Resources */,
+				EAD74F321F0DC31200F4E384 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EAD74F311F0DC31200F4E384 /* PBXTargetDependency */,
 			);
 			name = Blinking_LED_detection;
 			productName = Blinking_LED_detection;
@@ -205,12 +280,56 @@
 			mainGroup = EA5144061F00477E0044E38D;
 			productRefGroup = EA5144101F00477E0044E38D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EAD74F1C1F0DC12500F4E384 /* Products */;
+					ProjectRef = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EA51440E1F00477E0044E38D /* Blinking_LED_detection */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EAD74F241F0DC12500F4E384 /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = EAD74F231F0DC12500F4E384 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAD74F261F0DC12500F4E384 /* EasyImagy.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = EasyImagy.framework;
+			remoteRef = EAD74F251F0DC12500F4E384 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAD74F281F0DC12500F4E384 /* EasyImagyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EasyImagyTests.xctest;
+			remoteRef = EAD74F271F0DC12500F4E384 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAD74F2A1F0DC12500F4E384 /* EasyImagyTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = EasyImagyTests.xctest;
+			remoteRef = EAD74F291F0DC12500F4E384 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAD74F2C1F0DC12500F4E384 /* EasyImagySample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = EasyImagySample.app;
+			remoteRef = EAD74F2B1F0DC12500F4E384 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EA51440D1F00477E0044E38D /* Resources */ = {
@@ -291,13 +410,23 @@
 				EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */,
 				EA5144151F00477E0044E38D /* ViewController.swift in Sources */,
 				EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */,
+				EA177B651F0C682F008FEA30 /* CGFloat+Extension.swift in Sources */,
 				EA79E92C1F0583F4000F51A3 /* Inceptionv3.mlmodel in Sources */,
 				EA5144131F00477E0044E38D /* AppDelegate.swift in Sources */,
 				EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */,
+				EA2B093C1F0D216500F5015D /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAD74F311F0DC31200F4E384 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "EasyImagy-iOS";
+			targetProxy = EAD74F301F0DC31200F4E384 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EA5144161F00477E0044E38D /* Main.storyboard */ = {
@@ -350,6 +479,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -406,6 +536,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -432,6 +563,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U8333665R6;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
@@ -456,6 +588,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = U8333665R6;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",

@@ -10,6 +10,6 @@
 #import <GPUImage/GPUImage.h>
 
 @interface GPUImageHelper : NSObject
-+ (UIImage *) doBinarize:(UIImage *)sourceImage;
-+ (UIImage *) grayImage :(UIImage *)inputImage;
++ (size_t) getWidth:(CGImageRef) cgImage;
++ (size_t) getHeight:(CGImageRef) cgImage;
 @end

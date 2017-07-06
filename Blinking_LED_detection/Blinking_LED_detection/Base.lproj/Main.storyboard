@@ -33,33 +33,57 @@
                                 <color key="backgroundColor" red="0.74117648599999997" green="0.90196084980000002" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40K-h6-Nns">
-                                <rect key="frame" x="0.0" y="420" width="375" height="247"/>
+                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qzz-MK-ZZz">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="247"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qzz-MK-ZZz">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="JaG-KE-pIa"/>
+                                            <constraint firstAttribute="width" constant="100" id="cye-tk-p6U"/>
+                                        </constraints>
                                     </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOn-tQ-n5a">
+                                        <rect key="frame" x="100" y="50" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Dzm-FC-X5h"/>
+                                            <constraint firstAttribute="height" constant="50" id="XwY-nJ-rBZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ms-p8-3TB">
+                                        <rect key="frame" x="150" y="50" width="225" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kpn-LB-Htj"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="onTakeFrame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bVO-ym-IM8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="top" secondItem="40K-h6-Nns" secondAttribute="top" id="5IU-by-MyR"/>
-                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="leading" secondItem="40K-h6-Nns" secondAttribute="leading" id="DDy-5U-CC9"/>
-                                    <constraint firstAttribute="bottom" secondItem="qzz-MK-ZZz" secondAttribute="bottom" id="Dh5-P4-wTf"/>
-                                    <constraint firstAttribute="trailing" secondItem="qzz-MK-ZZz" secondAttribute="trailing" constant="100" id="edh-Zg-bcq"/>
+                                    <constraint firstItem="qzz-MK-ZZz" firstAttribute="leading" secondItem="40K-h6-Nns" secondAttribute="leading" id="5WT-L5-tPL"/>
+                                    <constraint firstAttribute="trailing" secondItem="1ms-p8-3TB" secondAttribute="trailing" id="6pB-rt-2qf"/>
+                                    <constraint firstAttribute="bottom" secondItem="qzz-MK-ZZz" secondAttribute="bottom" id="BOD-0A-CCo"/>
+                                    <constraint firstAttribute="height" constant="100" id="Cgp-LY-cnL"/>
+                                    <constraint firstAttribute="bottom" secondItem="1ms-p8-3TB" secondAttribute="bottom" id="QdV-3c-bk6"/>
+                                    <constraint firstItem="1ms-p8-3TB" firstAttribute="leading" secondItem="lOn-tQ-n5a" secondAttribute="trailing" id="RVB-2Z-mN4"/>
+                                    <constraint firstItem="lOn-tQ-n5a" firstAttribute="leading" secondItem="qzz-MK-ZZz" secondAttribute="trailing" id="aEu-5N-tqm"/>
+                                    <constraint firstAttribute="bottom" secondItem="lOn-tQ-n5a" secondAttribute="bottom" id="bRW-50-Fuy"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="40K-h6-Nns" secondAttribute="trailing" id="0iA-bF-nPH"/>
-                            <constraint firstItem="40K-h6-Nns" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2Ya-Mw-yQG"/>
-                            <constraint firstItem="40K-h6-Nns" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="400" id="6Dt-4O-vr7"/>
+                            <constraint firstAttribute="trailing" secondItem="40K-h6-Nns" secondAttribute="trailing" id="1XQ-mE-6Uz"/>
+                            <constraint firstItem="40K-h6-Nns" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2EL-AW-QVs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="40K-h6-Nns" secondAttribute="bottom" id="MTf-aH-7hw"/>
                             <constraint firstItem="e6y-X0-Q5b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="O0J-Us-BAS"/>
                             <constraint firstItem="CpR-7T-kBk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="b6p-Tt-Asz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CpR-7T-kBk" secondAttribute="bottom" id="ick-uE-6QB"/>
                             <constraint firstAttribute="trailing" secondItem="CpR-7T-kBk" secondAttribute="trailing" id="nta-Bg-BcV"/>
                             <constraint firstItem="e6y-X0-Q5b" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qdj-sP-AdX"/>
                             <constraint firstItem="CpR-7T-kBk" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="trX-AC-u8h"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="40K-h6-Nns" secondAttribute="bottom" id="ybf-mR-0Hk"/>
                         </constraints>
                     </view>
                     <connections>
@@ -67,6 +91,7 @@
                         <outlet property="cameraView" destination="CpR-7T-kBk" id="n3e-OH-LfM"/>
                         <outlet property="focusView" destination="e6y-X0-Q5b" id="Kak-EI-nL3"/>
                         <outlet property="frameImageView" destination="qzz-MK-ZZz" id="LFe-tk-6MR"/>
+                        <outlet property="smallImageView" destination="lOn-tQ-n5a" id="uN9-d0-6Jb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

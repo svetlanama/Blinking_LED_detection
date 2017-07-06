@@ -62,17 +62,16 @@ extension UIImage {
     
     func doBinarize() -> UIImage? {
         
-        //first off, try to grayscale the image using iOS core Image routine
         let grayScaledImg = self.grayImage()
         let imageSource = GPUImagePicture(image: grayScaledImg)
-        let stillImageFilter = GPUImageLuminanceThresholdFilter() //GPUImageAdaptiveThresholdFilter()
-        //stillImageFilter.blurRadiusInPixels = 58.0 //.blurSize
-        stillImageFilter.threshold = 0.9 //works
+        let stillImageFilter = GPUImageAdaptiveThresholdFilter()
+        stillImageFilter.blurRadiusInPixels = 8.0
+        //let stillImageFilter = GPUImageLuminanceThresholdFilter()
+        //stillImageFilter.threshold = 0.9 //works
         
         imageSource!.addTarget(stillImageFilter)
         stillImageFilter.useNextFrameForImageCapture()
         imageSource!.processImage()
-        
         
         guard let retImage: UIImage = stillImageFilter.imageFromCurrentFramebuffer(with: UIImageOrientation.up) else {
             print("unable to obtain UIImage from filter")
