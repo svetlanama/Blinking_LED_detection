@@ -33,24 +33,24 @@
                                 <color key="backgroundColor" red="0.74117648599999997" green="0.90196084980000002" blue="0.44705885649999999" alpha="1" colorSpace="deviceRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40K-h6-Nns">
-                                <rect key="frame" x="0.0" y="567" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="517" width="375" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qzz-MK-ZZz">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="JaG-KE-pIa"/>
-                                            <constraint firstAttribute="width" constant="100" id="cye-tk-p6U"/>
+                                            <constraint firstAttribute="height" constant="150" id="JaG-KE-pIa"/>
+                                            <constraint firstAttribute="width" constant="150" id="cye-tk-p6U"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOn-tQ-n5a">
-                                        <rect key="frame" x="100" y="50" width="50" height="50"/>
+                                        <rect key="frame" x="150" y="100" width="50" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="Dzm-FC-X5h"/>
                                             <constraint firstAttribute="height" constant="50" id="XwY-nJ-rBZ"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ms-p8-3TB">
-                                        <rect key="frame" x="150" y="50" width="225" height="50"/>
+                                        <rect key="frame" x="200" y="100" width="175" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kpn-LB-Htj"/>
                                         </constraints>
@@ -65,7 +65,7 @@
                                     <constraint firstItem="qzz-MK-ZZz" firstAttribute="leading" secondItem="40K-h6-Nns" secondAttribute="leading" id="5WT-L5-tPL"/>
                                     <constraint firstAttribute="trailing" secondItem="1ms-p8-3TB" secondAttribute="trailing" id="6pB-rt-2qf"/>
                                     <constraint firstAttribute="bottom" secondItem="qzz-MK-ZZz" secondAttribute="bottom" id="BOD-0A-CCo"/>
-                                    <constraint firstAttribute="height" constant="100" id="Cgp-LY-cnL"/>
+                                    <constraint firstAttribute="height" constant="150" id="Cgp-LY-cnL"/>
                                     <constraint firstAttribute="bottom" secondItem="1ms-p8-3TB" secondAttribute="bottom" id="QdV-3c-bk6"/>
                                     <constraint firstItem="1ms-p8-3TB" firstAttribute="leading" secondItem="lOn-tQ-n5a" secondAttribute="trailing" id="RVB-2Z-mN4"/>
                                     <constraint firstItem="lOn-tQ-n5a" firstAttribute="leading" secondItem="qzz-MK-ZZz" secondAttribute="trailing" id="aEu-5N-tqm"/>

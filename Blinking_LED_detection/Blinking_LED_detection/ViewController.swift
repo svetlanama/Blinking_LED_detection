@@ -19,7 +19,11 @@ import EasyImagy
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     var timer: Timer?
+    let interval =  0.1 // 100 ms
     var flag = false
+    var timerFlag = false
+    let imagePorceccing = ImageProcessing.sharedInstance
+    
     @IBOutlet private weak var focusView: UIView! {
         didSet {
             focusView.layer.borderColor = UIColor.yellow.cgColor
@@ -28,7 +32,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     @IBAction func onTakeFrame(_ sender: Any) {
-        flag = true
+      flag = !flag
+      //  imagePorceccing.handleHistogramm()
+        if !flag {
+            stopTimer()
+            imagePorceccing.handleHistogramm()
+        } else {
+            imagePorceccing.resetDecodedResult()
+            imagePorceccing.resetHistogramm()
+            startTimer()
+        }
     }
     
     @IBOutlet private weak var cameraView: UIView!
@@ -38,12 +51,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet weak var frameImageView: UIImageView!
     @IBOutlet weak var smallImageView: UIImageView!
+    
     // MARK: Sample buffer to UIImage conversion
     private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         return ciImage
     }
+    
     let stillImageOutput = AVCaptureStillImageOutput()
     private lazy var cameraLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
     let captureDevice = AVCaptureDevice.default(for: .video)
@@ -61,14 +76,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return session
     }()
     
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.event(timer:)), userInfo: nil, repeats: false)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //startTimer()
-        
+
         cameraView?.layer.addSublayer(self.cameraLayer)
         self.cameraLayer.videoGravity = .resizeAspectFill
         
@@ -92,16 +102,23 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         //guard let ciimage = CIImage(image: binImage!) else { return }
         //searchLightSpot(ciImage: ciimage)
         
-        //imageColorAnalyze(img: binImage!)
-        
-        
         //performImageRecognition(image: image)
-        
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(ViewController.event(timer:)), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        if timer != nil {
+            timer!.invalidate()
+            timer = nil
+        }
     }
     
     @objc func event(timer: Timer!) {
         print("timer")
-        //saveToCamera()
+        timerFlag = true
     }
     
     func setUpFocus() {
@@ -134,55 +151,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         cameraLayer.frame = self.cameraView?.bounds ?? .zero
     }
     
-    lazy var rectanglesRequest: VNDetectRectanglesRequest = {
-        return VNDetectRectanglesRequest(completionHandler: self.handleRectangles)
-    }()
-    
-    func handleRectangles(request: VNRequest, error: Error?) {
-        guard let observations = request.results as? [VNDetectedObjectObservation]
-            else {
-                print("unexpected result type from VNDetectedObjectObservation")
-                return
-        }
-        guard let detectedObject = observations.first else {
-            print("not detected object")
-            return
-        }
-        print("=== detected object ===", detectedObject)
-    }
-    
-    func getImageFromSampleBuffer(sampleBuffer: CMSampleBuffer) ->UIImage? {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return nil
-        }
-        CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
-        let baseAddress = CVPixelBufferGetBaseAddress(pixelBuffer)
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue | CGBitmapInfo.byteOrder32Little.rawValue)
-        guard let context = CGContext(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo.rawValue) else {
-            return nil
-        }
-        guard let cgImage = context.makeImage() else {
-            return nil
-        }
-        let image = UIImage(cgImage: cgImage, scale: 1, orientation:.right)
-        CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly)
-        return image
-    }
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         connection.videoOrientation = AVCaptureVideoOrientation.portrait
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
-        if flag {
+        if flag && timerFlag {
             DispatchQueue.main.async { [unowned self] in
                 let croppedImage = self.cropImage(uiImage: uiImage)
                 self.performImageRecognition(uimage: croppedImage!)
             }
-            flag = false
+            timerFlag = false
         }
     }
     
@@ -219,32 +197,16 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let image = Image<RGBA>(uiImage: uimage)!
         let binarized = image.map {  $0.gray < 245 ? .black : .white }
         
-        //DispatchQueue.main.async { [unowned self] in
         self.frameImageView.image = binarized.uiImage
         let smallInage = binarized.resize(width: 50, height: 50)
         self.smallImageView.image = smallInage.uiImage
         
         if isWhiteSpotExists(image: smallInage) {
             print("white spot detected")
+            imagePorceccing.addValueToHistogramm(value: 1)
         } else {
             print("white spot NOT detected")
-        }
-        //}
-        //guard let ciimage = CIImage(image:  binarized.uiImage) else { return }
-        //searchLightSpot(ciImage: ciimage)
-        
-        //imageColorAnalyze(img: binImage!)
-    }
-    
-    func searchLightSpot(ciImage: CIImage) {
-        var requestOptions: [VNImageOption: Any] = [:]
-        let handler = VNImageRequestHandler(ciImage: ciImage, options: requestOptions)
-        DispatchQueue.global(qos: .userInteractive).async {
-            do {
-                try handler.perform([self.rectanglesRequest])
-            } catch {
-                print(error)
-            }
+            imagePorceccing.addValueToHistogramm(value: 0)
         }
     }
     
@@ -252,15 +214,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
          var kWidth = 0
          for x in 0..<image.width{
-              print("======== W =======")
+              //print("======== W =======")
             var kHeight = 0
             for y in 0..<image.height {
-                 print("======== H =======")
+                 //print("======== H =======")
                 if let pixel = image.pixel(x, y) {
-                    print(pixel)
-                    if pixel.description == "#FFFFFFFF"{
+                    //print(pixel)
+                    if pixel.description == "#FFFFFFFF" {
                         kHeight += 1
-                        print("H Pixel is white: \(kHeight)")
+                        //print("H Pixel is white: \(kHeight)")
                     } else {
                         kHeight = 0
                     }
@@ -276,21 +238,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 return true
             }
         }
-        
-        /*for pixel in image {
-            //if let pixel = image.pixel(x, y) {
-            //                print(pixel.red)
-            //                print(pixel.green)
-            //                print(pixel.blue)
-            //                print(pixel.alpha)
-            
-            print(pixel.gray) // (red + green + blue) / 3
-            print(pixel) // formatted like "#FF0000FF"
-            print("pixel.description: ",pixel.description)
-            if pixel.description == "#FFFFFFFF" {
-                print("Pixel is white")
-            }
-        }*/
         return false
     }
     
@@ -298,17 +245,3 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.didReceiveMemoryWarning()
     }
 }
-
-/*
- 
- // let binImage = image.doBinarize()
- 
- //        let binImage = CIImage(image: image)!
- //            .applyingFilter("CIColorControls", withInputParameters: [
- //                    kCIInputSaturationKey: 0,
- //                    kCIInputContrastKey: 4.5,
- //                    kCIInputBrightnessKey: -1.54
- //                    ])
- 
- 
- */
