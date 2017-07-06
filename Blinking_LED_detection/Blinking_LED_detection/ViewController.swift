@@ -38,6 +38,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             stopTimer()
             imagePorceccing.handleHistogramm()
         } else {
+            imagePorceccing.resetWordResult()
             imagePorceccing.resetDecodedResult()
             imagePorceccing.resetHistogramm()
             startTimer()
