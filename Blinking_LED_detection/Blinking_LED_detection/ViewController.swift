@@ -19,7 +19,7 @@ import EasyImagy
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     var timer: Timer?
-    let interval =  0.1 // 100 ms
+    let interval = 0.001 // 100 ms = 0.1
     var flag = false
     var timerFlag = false
     let imagePorceccing = ImageProcessing.sharedInstance
@@ -32,8 +32,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     
     @IBAction func onTakeFrame(_ sender: Any) {
-      flag = !flag
-      //  imagePorceccing.handleHistogramm()
+        flag = !flag
+        
         if !flag {
             stopTimer()
             imagePorceccing.handleHistogramm()
@@ -47,20 +47,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     @IBOutlet private weak var cameraView: UIView!
     @IBOutlet private weak var binCameraView: UIView!
-    private let context = CIContext()
-    private var count = 0
-    
     @IBOutlet weak var frameImageView: UIImageView!
     @IBOutlet weak var smallImageView: UIImageView!
     
-    // MARK: Sample buffer to UIImage conversion
-    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CIImage? {
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        return ciImage
-    }
-    
-    let stillImageOutput = AVCaptureStillImageOutput()
     private lazy var cameraLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
     let captureDevice = AVCaptureDevice.default(for: .video)
     
@@ -73,13 +62,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             else { return session }
         
         session.addInput(input)
-        
         return session
     }()
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        cameraLayer.frame = self.cameraView?.bounds ?? .zero
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         cameraView?.layer.addSublayer(self.cameraLayer)
         self.cameraLayer.videoGravity = .resizeAspectFill
         
@@ -93,33 +86,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         self.captureSession.startRunning()
         
         view.bringSubview(toFront: focusView)
-        
-        //TEST
-        //var image = UIImage(named: "Blob.png")//"3.png")
-        // image = GPUImageHelper.cropImage(image, to: CGRect(x: 0, y:0 , width: 100, height: 100), andScaleTo: focusView.frame.size)
-        // var binImage = image!.doBinarize()
-        
-        // frameImageView.image =  binImage
-        //guard let ciimage = CIImage(image: binImage!) else { return }
-        //searchLightSpot(ciImage: ciimage)
-        
-        //performImageRecognition(image: image)
-    }
-    
-    func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(ViewController.event(timer:)), userInfo: nil, repeats: true)
-    }
-    
-    func stopTimer() {
-        if timer != nil {
-            timer!.invalidate()
-            timer = nil
-        }
-    }
-    
-    @objc func event(timer: Timer!) {
-        print("timer")
-        timerFlag = true
     }
     
     func setUpFocus() {
@@ -147,9 +113,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        cameraLayer.frame = self.cameraView?.bounds ?? .zero
+    // MARK: Sample buffer to UIImage conversion
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> CIImage? {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+        return ciImage
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
@@ -157,11 +125,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
         
         if flag && timerFlag {
+            timerFlag = false
             DispatchQueue.main.async { [unowned self] in
                 let croppedImage = self.cropImage(uiImage: uiImage)
                 self.performImageRecognition(uimage: croppedImage!)
             }
-            timerFlag = false
         }
     }
     
@@ -172,11 +140,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         convertedRect.origin.y = 1 - convertedRect.origin.y
         
         var outputRect = cameraLayer.metadataOutputRectConverted(fromLayerRect: originalRect)
-        //print("outputRect: ", outputRect)
-        //  outputRect.origin.y = outputRect.origin.x
-        //  outputRect.origin.x = 0
-        //  outputRect.size.height = outputRect.size.width
-        //  outputRect.size.width = 1
         
         let takenImage = UIImage(ciImage: uiImage)
         let context = CIContext()
@@ -196,53 +159,44 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     func performImageRecognition(uimage: UIImage) {
         
         let image = Image<RGBA>(uiImage: uimage)!
-        let binarized = image.map {  $0.gray < 245 ? .black : .white }
+        let imgSize = 25
         
-        self.frameImageView.image = binarized.uiImage
-        let smallInage = binarized.resize(width: 50, height: 50)
-        self.smallImageView.image = smallInage.uiImage
+        //DispatchQueue.global(qos: .background).async {
+            let smallImage = image.resize(width: imgSize, height: imgSize)
+            let data = smallImage.binarize()
         
-        if isWhiteSpotExists(image: smallInage) {
-            print("white spot detected")
-            imagePorceccing.addValueToHistogramm(value: 1)
-        } else {
-            print("white spot NOT detected")
-            imagePorceccing.addValueToHistogramm(value: 0)
+            //DispatchQueue.main.sync { [weak self] in
+                smallImageView.image = data.binarizedImage.uiImage
+                if data.isWhite {
+                    print("white spot detected")
+                    imagePorceccing.addValueToHistogramm(value: 1)
+                } else {
+                    print("white spot NOT detected")
+                    imagePorceccing.addValueToHistogramm(value: 0)
+                }
+            //}
+        //}
+    }
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(ViewController.getCameraFrame(timer:)), userInfo: nil, repeats: true)
+    }
+    
+    func stopTimer() {
+        if timer != nil {
+            timer!.invalidate()
+            timer = nil
         }
     }
     
-    func isWhiteSpotExists(image: Image<RGBA>) -> Bool {
-        
-         var kWidth = 0
-         for x in 0..<image.width{
-              //print("======== W =======")
-            var kHeight = 0
-            for y in 0..<image.height {
-                 //print("======== H =======")
-                if let pixel = image.pixel(x, y) {
-                    //print(pixel)
-                    if pixel.description == "#FFFFFFFF" {
-                        kHeight += 1
-                        //print("H Pixel is white: \(kHeight)")
-                    } else {
-                        kHeight = 0
-                    }
-                    
-                    if kHeight > 10 { //define % 5% of height
-                        kWidth += 1
-                        break
-                    }
-                }
-            }
-            print("Hwhite: \(kHeight) Wwhite: \(kWidth)")
-            if kHeight >= 10 && kWidth >= 10  {
-                return true
-            }
-        }
-        return false
+    @objc func getCameraFrame(timer: Timer!) {
+        timerFlag = true
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+
+
+

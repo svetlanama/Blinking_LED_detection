@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09E361F4CF5AE485B1528093 /* Pods_Blinking_LED_detection.framework */; };
-		EA177B631F0C4EA1008FEA30 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = EA177B621F0C4EA1008FEA30 /* 3.png */; };
 		EA177B651F0C682F008FEA30 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */; };
 		EA2B093C1F0D216500F5015D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B093B1F0D216500F5015D /* UIColor+Extension.swift */; };
 		EA5133671F0080EC0040DAA4 /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */; };
@@ -17,61 +16,55 @@
 		EA5144181F00477E0044E38D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5144161F00477E0044E38D /* Main.storyboard */; };
 		EA51441A1F00477E0044E38D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5144191F00477E0044E38D /* Assets.xcassets */; };
 		EA51441D1F00477E0044E38D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA51441B1F00477E0044E38D /* LaunchScreen.storyboard */; };
-		EA79E9251F054612000F51A3 /* faces2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EA79E9241F054612000F51A3 /* faces2.jpeg */; };
-		EA79E9271F054661000F51A3 /* IMG_2259.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E9261F054661000F51A3 /* IMG_2259.PNG */; };
-		EA79E92A1F057CC5000F51A3 /* 1.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E9291F057CC4000F51A3 /* 1.PNG */; };
 		EA79E92C1F0583F4000F51A3 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */; };
 		EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EA79E9281F05787E000F51A3 /* Resnet50.mlmodel */; };
-		EA79E92F1F0584AF000F51A3 /* 2.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EA79E92E1F0584AF000F51A3 /* 2.PNG */; };
-		EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EA95D3521F05A71C008C3C8E /* black14.jpg */; };
-		EAAD1F1E1F0BFB6800FAA075 /* Blob.png in Resources */ = {isa = PBXBuildFile; fileRef = EAAD1F1D1F0BFB6800FAA075 /* Blob.png */; };
-		EAD74F2E1F0DC31200F4E384 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD74F241F0DC12500F4E384 /* EasyImagy.framework */; };
-		EAD74F2F1F0DC31200F4E384 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAD74F241F0DC12500F4E384 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EABD228D1F16A2F600AF59D3 /* Image+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABD228C1F16A2F600AF59D3 /* Image+Extension.swift */; };
+		EABD22C71F16A66900AF59D3 /* EasyImagy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EABD22B91F16A58400AF59D3 /* EasyImagy.framework */; };
+		EABD22C81F16A66900AF59D3 /* EasyImagy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EABD22B91F16A58400AF59D3 /* EasyImagy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */; };
-		EAE3608E1F0BDE1E00495545 /* flash.PNG in Resources */ = {isa = PBXBuildFile; fileRef = EAE3608D1F0BDE1E00495545 /* flash.PNG */; };
 		EAE360901F0BDF2A00495545 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */; };
 		EAFA234E1F0B23A400F6672F /* ImageProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EAD74F231F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+		EABD22B81F16A58400AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D65FF0711AFB66C7006CC985;
 			remoteInfo = "EasyImagy-iOS";
 		};
-		EAD74F251F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+		EABD22BA1F16A58400AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D69C33A61C8D3D2A007985D4;
 			remoteInfo = "EasyImagy-OSX";
 		};
-		EAD74F271F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+		EABD22BC1F16A58400AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D65FF07C1AFB66C7006CC985;
 			remoteInfo = "EasyImagy-iOS Tests";
 		};
-		EAD74F291F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+		EABD22BE1F16A58400AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D69C33AF1C8D3D2A007985D4;
 			remoteInfo = "EasyImagy-OSX Tests";
 		};
-		EAD74F2B1F0DC12500F4E384 /* PBXContainerItemProxy */ = {
+		EABD22C01F16A58400AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D6C2EDF81B031A0900E2B876;
 			remoteInfo = EasyImagySample;
 		};
-		EAD74F301F0DC31200F4E384 /* PBXContainerItemProxy */ = {
+		EABD22C91F16A66900AF59D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+			containerPortal = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = D65FF0701AFB66C7006CC985;
 			remoteInfo = "EasyImagy-iOS";
@@ -79,13 +72,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EAD74F321F0DC31200F4E384 /* Embed Frameworks */ = {
+		EABD22CB1F16A66A00AF59D3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EAD74F2F1F0DC31200F4E384 /* EasyImagy.framework in Embed Frameworks */,
+				EABD22C81F16A66900AF59D3 /* EasyImagy.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,7 +90,6 @@
 		8343B57B88AE687726AFDC8A /* Pods-Blinking_LED_detection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.release.xcconfig"; sourceTree = "<group>"; };
 		D28BFCC9195CDEED9715A167 /* Pods-Blinking_LED_detection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blinking_LED_detection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blinking_LED_detection/Pods-Blinking_LED_detection.debug.xcconfig"; sourceTree = "<group>"; };
 		EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blinking_LED_detection-Bridging-Header.h"; sourceTree = "<group>"; };
-		EA177B621F0C4EA1008FEA30 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3.png; path = ../../../../Downloads/3.png; sourceTree = "<group>"; };
 		EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		EA1E38561F047981003E037A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EA2B093B1F0D216500F5015D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -113,19 +105,17 @@
 		EA6EE3601F047A1400732508 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EA6EE3621F047A1C00732508 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		EA6EE3641F047A2300732508 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		EA79E9231F054562000F51A3 /* Arduino.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Arduino.JPG; sourceTree = "<group>"; };
-		EA79E9241F054612000F51A3 /* faces2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = faces2.jpeg; path = ../../../../Downloads/faces2.jpeg; sourceTree = "<group>"; };
-		EA79E9261F054661000F51A3 /* IMG_2259.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2259.PNG; path = ../../../../Downloads/IMG_2259.PNG; sourceTree = "<group>"; };
 		EA79E9281F05787E000F51A3 /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
-		EA79E9291F057CC4000F51A3 /* 1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1.PNG; path = ../../../../Downloads/1.PNG; sourceTree = "<group>"; };
 		EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
-		EA79E92E1F0584AF000F51A3 /* 2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.PNG; path = ../../../../Downloads/2.PNG; sourceTree = "<group>"; };
-		EA95D3521F05A71C008C3C8E /* black14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = black14.jpg; path = ../../../../Downloads/black14.jpg; sourceTree = "<group>"; };
-		EAAD1F1D1F0BFB6800FAA075 /* Blob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blob.png; path = ../../../../Downloads/Blob.png; sourceTree = "<group>"; };
-		EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = EasyImagy.xcodeproj; path = "../../../../Downloads/EasyImagy-swift-3/EasyImagy.xcodeproj"; sourceTree = "<group>"; };
+		EABD228C1F16A2F600AF59D3 /* Image+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extension.swift"; sourceTree = "<group>"; };
+		EABD22991F16A47300AF59D3 /* IMG_2259.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2259.PNG; sourceTree = "<group>"; };
+		EABD229A1F16A47300AF59D3 /* flash.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash.PNG; sourceTree = "<group>"; };
+		EABD229B1F16A47300AF59D3 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		EABD229C1F16A47300AF59D3 /* Arduino.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Arduino.JPG; sourceTree = "<group>"; };
+		EABD229D1F16A47300AF59D3 /* 1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.PNG; sourceTree = "<group>"; };
+		EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = EasyImagy.xcodeproj; sourceTree = SOURCE_ROOT; };
 		EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPUImageHelper.h; sourceTree = "<group>"; };
 		EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPUImageHelper.m; sourceTree = "<group>"; };
-		EAE3608D1F0BDE1E00495545 /* flash.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flash.PNG; path = ../../../../Downloads/flash.PNG; sourceTree = "<group>"; };
 		EAE3608F1F0BDF2A00495545 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAD74F2E1F0DC31200F4E384 /* EasyImagy.framework in Frameworks */,
+				EABD22C71F16A66900AF59D3 /* EasyImagy.framework in Frameworks */,
 				5112142067FF05766C5AD407 /* Pods_Blinking_LED_detection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,22 +176,14 @@
 		EA5144111F00477E0044E38D /* Blinking_LED_detection */ = {
 			isa = PBXGroup;
 			children = (
+				EABD22981F16A44300AF59D3 /* utils */,
+				EABD22921F16A41900AF59D3 /* images */,
 				EA5144121F00477E0044E38D /* AppDelegate.swift */,
 				EA5144141F00477E0044E38D /* ViewController.swift */,
-				EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */,
 				EA177B641F0C682F008FEA30 /* CGFloat+Extension.swift */,
 				EAFA234D1F0B23A400F6672F /* ImageProcessing.swift */,
-				EAAD1F1D1F0BFB6800FAA075 /* Blob.png */,
 				EA79E92B1F058372000F51A3 /* Inceptionv3.mlmodel */,
-				EA177B621F0C4EA1008FEA30 /* 3.png */,
-				EA95D3521F05A71C008C3C8E /* black14.jpg */,
-				EAE3608D1F0BDE1E00495545 /* flash.PNG */,
 				EA5133661F0080EC0040DAA4 /* FrameExtractor.swift */,
-				EA79E9241F054612000F51A3 /* faces2.jpeg */,
-				EA79E9231F054562000F51A3 /* Arduino.JPG */,
-				EA79E9261F054661000F51A3 /* IMG_2259.PNG */,
-				EA79E92E1F0584AF000F51A3 /* 2.PNG */,
-				EA79E9291F057CC4000F51A3 /* 1.PNG */,
 				EA79E9281F05787E000F51A3 /* Resnet50.mlmodel */,
 				EA5144161F00477E0044E38D /* Main.storyboard */,
 				EA5144191F00477E0044E38D /* Assets.xcassets */,
@@ -212,18 +194,40 @@
 				EA177B571F0C37A2008FEA30 /* Blinking_LED_detection-Bridging-Header.h */,
 				EADF0E531F0C32CD00B98957 /* GPUImageHelper.h */,
 				EADF0E541F0C32CD00B98957 /* GPUImageHelper.m */,
+				EABD228C1F16A2F600AF59D3 /* Image+Extension.swift */,
+				EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */,
 			);
 			path = Blinking_LED_detection;
 			sourceTree = "<group>";
 		};
-		EAD74F1C1F0DC12500F4E384 /* Products */ = {
+		EABD22921F16A41900AF59D3 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				EAD74F241F0DC12500F4E384 /* EasyImagy.framework */,
-				EAD74F261F0DC12500F4E384 /* EasyImagy.framework */,
-				EAD74F281F0DC12500F4E384 /* EasyImagyTests.xctest */,
-				EAD74F2A1F0DC12500F4E384 /* EasyImagyTests.xctest */,
-				EAD74F2C1F0DC12500F4E384 /* EasyImagySample.app */,
+				EABD229C1F16A47300AF59D3 /* Arduino.JPG */,
+				EABD229B1F16A47300AF59D3 /* 3.png */,
+				EABD229A1F16A47300AF59D3 /* flash.PNG */,
+				EABD229D1F16A47300AF59D3 /* 1.PNG */,
+				EABD22991F16A47300AF59D3 /* IMG_2259.PNG */,
+			);
+			name = images;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		EABD22981F16A44300AF59D3 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		EABD22B11F16A58400AF59D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EABD22B91F16A58400AF59D3 /* EasyImagy.framework */,
+				EABD22BB1F16A58400AF59D3 /* EasyImagy.framework */,
+				EABD22BD1F16A58400AF59D3 /* EasyImagyTests.xctest */,
+				EABD22BF1F16A58400AF59D3 /* EasyImagyTests.xctest */,
+				EABD22C11F16A58400AF59D3 /* EasyImagySample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -241,12 +245,12 @@
 				EA51440D1F00477E0044E38D /* Resources */,
 				6F92446E845C4B011520D305 /* [CP] Embed Pods Frameworks */,
 				E62E32509FF338CC37D7061E /* [CP] Copy Pods Resources */,
-				EAD74F321F0DC31200F4E384 /* Embed Frameworks */,
+				EABD22CB1F16A66A00AF59D3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EAD74F311F0DC31200F4E384 /* PBXTargetDependency */,
+				EABD22CA1F16A66900AF59D3 /* PBXTargetDependency */,
 			);
 			name = Blinking_LED_detection;
 			productName = Blinking_LED_detection;
@@ -282,8 +286,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = EAD74F1C1F0DC12500F4E384 /* Products */;
-					ProjectRef = EAD74F1B1F0DC12500F4E384 /* EasyImagy.xcodeproj */;
+					ProductGroup = EABD22B11F16A58400AF59D3 /* Products */;
+					ProjectRef = EABD22B01F16A58400AF59D3 /* EasyImagy.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -294,39 +298,39 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EAD74F241F0DC12500F4E384 /* EasyImagy.framework */ = {
+		EABD22B91F16A58400AF59D3 /* EasyImagy.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = EasyImagy.framework;
-			remoteRef = EAD74F231F0DC12500F4E384 /* PBXContainerItemProxy */;
+			remoteRef = EABD22B81F16A58400AF59D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EAD74F261F0DC12500F4E384 /* EasyImagy.framework */ = {
+		EABD22BB1F16A58400AF59D3 /* EasyImagy.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = EasyImagy.framework;
-			remoteRef = EAD74F251F0DC12500F4E384 /* PBXContainerItemProxy */;
+			remoteRef = EABD22BA1F16A58400AF59D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EAD74F281F0DC12500F4E384 /* EasyImagyTests.xctest */ = {
+		EABD22BD1F16A58400AF59D3 /* EasyImagyTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = EasyImagyTests.xctest;
-			remoteRef = EAD74F271F0DC12500F4E384 /* PBXContainerItemProxy */;
+			remoteRef = EABD22BC1F16A58400AF59D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EAD74F2A1F0DC12500F4E384 /* EasyImagyTests.xctest */ = {
+		EABD22BF1F16A58400AF59D3 /* EasyImagyTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = EasyImagyTests.xctest;
-			remoteRef = EAD74F291F0DC12500F4E384 /* PBXContainerItemProxy */;
+			remoteRef = EABD22BE1F16A58400AF59D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		EAD74F2C1F0DC12500F4E384 /* EasyImagySample.app */ = {
+		EABD22C11F16A58400AF59D3 /* EasyImagySample.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = EasyImagySample.app;
-			remoteRef = EAD74F2B1F0DC12500F4E384 /* PBXContainerItemProxy */;
+			remoteRef = EABD22C01F16A58400AF59D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -336,17 +340,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA177B631F0C4EA1008FEA30 /* 3.png in Resources */,
 				EA51441D1F00477E0044E38D /* LaunchScreen.storyboard in Resources */,
 				EA51441A1F00477E0044E38D /* Assets.xcassets in Resources */,
-				EAAD1F1E1F0BFB6800FAA075 /* Blob.png in Resources */,
-				EA79E9271F054661000F51A3 /* IMG_2259.PNG in Resources */,
-				EAE3608E1F0BDE1E00495545 /* flash.PNG in Resources */,
-				EA79E92A1F057CC5000F51A3 /* 1.PNG in Resources */,
-				EA95D3531F05A71C008C3C8E /* black14.jpg in Resources */,
 				EA5144181F00477E0044E38D /* Main.storyboard in Resources */,
-				EA79E92F1F0584AF000F51A3 /* 2.PNG in Resources */,
-				EA79E9251F054612000F51A3 /* faces2.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EABD228D1F16A2F600AF59D3 /* Image+Extension.swift in Sources */,
 				EA79E92D1F0583F6000F51A3 /* Resnet50.mlmodel in Sources */,
 				EAE360901F0BDF2A00495545 /* UIImage+Extension.swift in Sources */,
 				EADF0E551F0C32CD00B98957 /* GPUImageHelper.m in Sources */,
@@ -421,10 +418,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		EAD74F311F0DC31200F4E384 /* PBXTargetDependency */ = {
+		EABD22CA1F16A66900AF59D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "EasyImagy-iOS";
-			targetProxy = EAD74F301F0DC31200F4E384 /* PBXContainerItemProxy */;
+			targetProxy = EABD22C91F16A66900AF59D3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

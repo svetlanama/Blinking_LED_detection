@@ -48,7 +48,6 @@ class ImageProcessing {
         var breakCount = 0
         var ableToDetect = false
         var ableToDetectBreak = false
-       // histogramm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
         for sig in 0..<histogramm.count {
             switch(histogramm[sig]) {
             case 1:
@@ -66,54 +65,24 @@ class ImageProcessing {
                     if signalCount >= 3 {
                         decodedResult.append(1) //1
                     } else {
-                        decodedResult.append(0)
+                        decodedResult.append(0) // 0 
                     }
                     signalCount = 0
                     ableToDetect = false
                     if decodedResult.count == 8 {
                         wordResult.append(decodedResult)
-                        resetDecodedResult()
+                        //resetDecodedResult()
                     }
                 }
-               // breakCount += 1
-               // ableToDetectBreak = true
-                
-                
-                
+                // breakCount += 1
+                // ableToDetectBreak = true
                 
             default:
                 break
             }
         }
+        
         print("decodedResult: ", decodedResult)
-        print("wordResult: ", wordResult)
-    }
-    
+        //print("wordResult: ", wordResult)
+    } 
 }
-
-//    private var arr = [Int]()
-//    private var counter = 0
-//    func addCounter() {
-//        counter += 1
-//        print("addCounter \(counter)")
-//    }
-//
-//    func defineSignalAndBreak() {
-//        print("defineSignal \(counter)")
-//        switch counter {
-//        case 10...24:
-//            print("===== 1 ======")
-//             arr.append(1)
-//        case 6...10:
-//            print("====== 0 =======")
-//            arr.append(0)
-//        default:
-//            print("not defined")
-//            break
-//        }
-//
-//        counter = 0
-//        if arr.count == 8 {
-//            print("arr count: \(arr)")
-//        }
-//    }

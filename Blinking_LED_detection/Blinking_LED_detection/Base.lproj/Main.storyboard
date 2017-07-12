@@ -43,14 +43,14 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lOn-tQ-n5a">
-                                        <rect key="frame" x="100" y="50" width="50" height="50"/>
+                                        <rect key="frame" x="100" y="75" width="25" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Dzm-FC-X5h"/>
-                                            <constraint firstAttribute="height" constant="50" id="XwY-nJ-rBZ"/>
+                                            <constraint firstAttribute="width" constant="25" id="Dzm-FC-X5h"/>
+                                            <constraint firstAttribute="height" constant="25" id="XwY-nJ-rBZ"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ms-p8-3TB">
-                                        <rect key="frame" x="150" y="50" width="225" height="50"/>
+                                        <rect key="frame" x="125" y="50" width="250" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kpn-LB-Htj"/>
                                         </constraints>
